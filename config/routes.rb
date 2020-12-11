@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/signup' => 'users#new'
   get '/signup' => 'users#create'
+  delete '/logout' => 'sessions#destroy'
 
 
   resources :reviews
