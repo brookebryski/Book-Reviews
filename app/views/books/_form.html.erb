@@ -1,4 +1,4 @@
-<%= render partial: 'errors', locals: {object: @book}  %>
+ <%= render partial: 'errors', locals: {object: @book}  %>
 <% form_for(@book) do |f|%>
   <div>
     <%= f.label :title %>
@@ -9,8 +9,8 @@
     <%= f.text_field :description %>
   </div>
   <br>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.label :genre %>
+    <%= f.text_field :genre %>
     <br>
 
   <p> Select an Author that already exists: </p>
