@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
     def new
         @book = Book.find_by_id(params[:id])
-        @review = @book.build_review
+        @review = @book.reviews.build
     end
 
     def index
