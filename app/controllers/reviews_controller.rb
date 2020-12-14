@@ -20,9 +20,13 @@ class ReviewsController < ApplicationController
 
 
     def index
+        if params[:book_id]
+            @book = Book.find_by_id(params[:book_id])
+            @reviews = @book.reviews
+        else
         @reviews = Review.all
     end
-
+end
     private
 
     def review_params
