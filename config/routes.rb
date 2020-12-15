@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
 
-
+  get '/auth/:provider/callback' => 'sessions#create'
+  
   resources :reviews
   resources :books do
     resources :reviews, only: [:new, :index]
