@@ -1,5 +1,7 @@
 <h1> Add a Review <%= @review.book.author.title %></h1>
 
+<%= render partial: 'layouts/errors', locals: {object: @review}  %>
+
 <%= form_for(@review) do |f| %>
     <%= f.label :stars %>
     <%= f.number_field :stars, min: 0, max: 5 %>
