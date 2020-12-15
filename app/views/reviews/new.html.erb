@@ -3,6 +3,15 @@
 <%= render partial: 'layouts/errors', locals: {object: @review}  %>
 
 <%= form_for(@review) do |f| %>
+  <% if params[:book_id] %>
+  <%= f.hidden_field :book_id %>
+  <% else %>
+    <div>
+    <%= f.label :book_id, "Please choose a book" %>
+    <%= f.collection_select :book_id, Book.alpha, :id, :title_and_author, include_blank: true %>
+  </div>
+<% end %>
+<div>
     <%= f.label :stars %>
     <%= f.number_field :stars, min: 0, max: 5 %>
   </div>

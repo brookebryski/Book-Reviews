@@ -20,4 +20,8 @@ class Book < ApplicationRecord
     end
   end
 
+  def title_and_author
+    "#{title} - #{author.name}" #her method looks different
+  end
+
 end
