@@ -8,6 +8,10 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validate :not_a_repeat
 
+  def self.alpha
+    order(:title)
+  end
+
   def author_attributes(attributes)
     author = Author.find_or_create_by(attributes) if !attributes['name'].empty?
   end
