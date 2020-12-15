@@ -1,4 +1,4 @@
-<h1> Add a Review <%= @review.book.author.title %></h1>
+<%=  display_header(@review)%>
 
 <%= render partial: 'layouts/errors', locals: {object: @review}  %>
 
