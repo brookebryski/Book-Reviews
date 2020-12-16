@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
 
-  get '/auth/:provider/callback' => 'sessions#create'
-  
+  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+
   resources :reviews
   resources :books do
     resources :reviews, only: [:new, :index]

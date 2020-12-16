@@ -22,5 +22,10 @@ class SessionsController < ApplicationController
             redirect_to login_path
         end
     end
+
+    def omniauth
+        
+    end
+
 end
 
