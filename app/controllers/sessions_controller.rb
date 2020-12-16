@@ -12,6 +12,16 @@ class SessionsController < ApplicationController
     end
 
     def create
+        if params[:provider] == 'google_oauth2'
+            @user = User.create_with_google(auth)
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+      
+          elsif params[:provider] == 'github'
+            @user = User.create_with_github(auth)
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+          else
         @user = User.find_by(username: params[:user][:username])
         if @user && @user.authenticate(params[:user][:password])
         #if @user.try(:authenticate, params[:user][:password])
@@ -20,6 +30,7 @@ class SessionsController < ApplicationController
         else
             flash[:error] = "Invalid login info. Please try again."
             redirect_to login_path
+            end
         end
     end
 
@@ -29,7 +40,7 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
     end
-
+    
     private 
 
     def auth
