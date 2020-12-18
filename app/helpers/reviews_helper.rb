@@ -1,6 +1,6 @@
 module ReviewsHelper
 
-    def display_header
+    def display_header(review)
         if params[:book_id]
             content_tag(:h1, "Add a Review for #{review.book.title} -  #{review.book.author.name}")
         else
