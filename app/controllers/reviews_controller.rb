@@ -1,8 +1,11 @@
 class ReviewsController < ApplicationController
 
     def new
-        @book = Book.find_by_id(params[:id])
+        if @book = Book.find_by_id(params[:book_id])
         @review = @book.reviews.build
+        else
+            @review = Review.new
+        end
     end
 
     def create
