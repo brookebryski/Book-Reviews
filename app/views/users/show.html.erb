@@ -1,1 +1,8 @@
-Hi <%= @user.username %>!
+<h1> Hi <%= @user.username %>! </h1>
+
+<h3> Your Reviewed Books: </h3>
+<ul>
+<% @user.reviewed_books.each do |b| %>
+<li> <%= link_to b.title, b.author, book_path(b)%> </li>
+<% end %>
+</ul>
