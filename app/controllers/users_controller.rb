@@ -13,6 +13,7 @@ class UsersController < ApplicationController
         render :new
     end
   end 
+
     def show
     @user = User.find_by_id(params[:id])
     redirect_to '/' if !@user
@@ -21,6 +22,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :password)
+        params.require(:user).permit(:username, :email, :password)
     end
 end
