@@ -1,24 +1,24 @@
-# README
+Book Reviews on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to the Book Reviews on Rails Web App! This app was created with the intention of providing an interface to share books, authors, and book reviews. It is a basic Rails project to fulfill project requirements at Flatiron School. Further functionality and development will continue in later projects.
 
-Things you may want to cover:
+Installation
+Clone this repository and execute:
 
-* Ruby version
+$bundle install
+Then execute:
 
-* System dependencies
+$rails db:migrate
+to create the database.
 
-* Configuration
+Next, execute:
 
-* Database creation
+$rails db:seed
+to add sample users, authors, books, and reviews to the database.
 
-* Database initialization
+Execute:
 
-* How to run the test suite
+$rails s
+and navigate to use a local server and navigate to localhost:3000 to preview the app.
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
