@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+    before_action :set_book, only:[:show, :edit, :update]
     before_action :redirect_if_not_logged_in
     
     def new
@@ -38,6 +39,11 @@ class BooksController < ApplicationController
 
     def book_params
         params.require(:book).permit(:title, :description, :genre, :author_id, author_attributes: [:name])
+    end
+
+    def set_book
+        @book = Book.find_by(params[:id])
+        redirect_to books_path is !@book
     end
 
 end
