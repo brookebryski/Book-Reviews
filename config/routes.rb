@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :books do
     resources :reviews, only: [:new, :index]
   end
+
   resources :authors
   resources :users, only: [:show]
   
