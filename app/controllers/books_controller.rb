@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     def create  
         @book = Book.new(book_params)
         @book.user_id = session[:user_id]
-        if @book.save
+         if @book.save
         redirect_to book_path(@book)
         else
         @book.build_author 
