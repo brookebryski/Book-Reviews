@@ -13,6 +13,7 @@ class BooksController < ApplicationController
         if @book.save
         redirect_to book_path(@book)
         else
+        @book.build_author
         render :new
     end
   end
@@ -43,7 +44,7 @@ class BooksController < ApplicationController
 
     def set_book
         @book = Book.find_by(params[:id])
-        redirect_to books_path is !@book
+        redirect_to books_path if !@book
     end
 
 end
