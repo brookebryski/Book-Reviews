@@ -2,6 +2,6 @@
 
     <ul>
    <% @reviews.each do |r| %>
-    <li><%= r.title%> - <%= r.stars%></li>
+    <li><%= r.book.title%>: <%= r.title%> - <%= r.stars%></li>
     <% end %>
     </ul>
