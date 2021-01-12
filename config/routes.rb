@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
 
-  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+  
+  get '/auth/facebook/callback' =>  'sessions#fbcreate'
 
   resources :reviews
   resources :books do

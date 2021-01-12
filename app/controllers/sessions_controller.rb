@@ -12,27 +12,27 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if params[:provider] == 'google_oauth2'
-            @user = User.create_with_google(auth)
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
-      
-          elsif params[:provider] == 'github'
-            @user = User.create_with_github(auth)
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
-          else
         @user = User.find_by(username: params[:user][:username])
         if @user && @user.authenticate(params[:user][:password])
-        #if @user.try(:authenticate, params[:user][:password])
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
+          session[:user_id] = @user.id
+          redirect_to user_path(@user)
         else
-            flash[:error] = "Invalid login info. Please try again."
-            redirect_to login_path
-            end
+          flash[:error] = "Sorry, your username or password was incorrect"
+          redirect_to '/login'
         end
-    end
+      end
+
+    def fbcreate
+        @user = User.find_or_create_by(uid: auth['uid']) do |u|
+          u.username = auth['info']['name']
+          u.email = auth['info']['email']
+          u.password = auth['uid']   # Secure Random Hex
+        end
+
+        session[:user_id] = @user.id
+
+        redirect_to '/books'
+  end
 
     def omniauth
         @user = User.create_with_google(auth)
@@ -41,6 +41,8 @@ class SessionsController < ApplicationController
         redirect_to user_path(@user)
     end
     
+    
+
     private 
 
     def auth
