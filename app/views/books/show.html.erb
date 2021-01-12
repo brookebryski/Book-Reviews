@@ -6,7 +6,6 @@
   <p><%= @book.description %></p>
 </div>
 
-<h3>Added by: <%= link_to @book.user, user_path(@user)%> </h3>
 
 <%= link_to "Edit #{@book.title}", edit_book_path(@book) if @book.user == current_user%>
 
