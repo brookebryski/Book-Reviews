@@ -1,7 +1,7 @@
 <h1> All the Reviews</h1>
 
-    <ul>
-   <% @reviews.each do |r| %>
-    <li><%= r.book.title%>: <%= r.title%> - <%= r.stars%></li>
-    <% end %>
-    </ul>
+<ul>
+<% @reviews.each do |r| %>
+<li><%= r.book.title%>: <%= r.title%> - <%= r.content%> <%= r.stars%> <%='stars'%></li>
+<% end %>
+</ul>
