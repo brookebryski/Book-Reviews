@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
-  get '/search' => 'books#search', :as => 'search_book'
+  
 
   
   get '/auth/facebook/callback' =>  'sessions#fbcreate'

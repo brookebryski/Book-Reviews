@@ -1,4 +1,11 @@
 <h1> Authors </h1>
+
+<%= form_tag("/authors", method: "get") do %>
+    <%= label_tag(:q, "Search by Author:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+
 <ol>
 <% @authors.each do |author| %>
     <li><%= author.name%></li>

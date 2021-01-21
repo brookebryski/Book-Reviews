@@ -1,5 +1,11 @@
 <h1> All the Books </h1>
 
+<%= form_tag("/books", method: "get") do %>
+    <%= label_tag(:q, "Search By Title:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+
 <% @books.each do |b| %>
 
     <h2><%= b.title%> - <%= b.author.name %> </h2>

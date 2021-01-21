@@ -18,9 +18,13 @@ class BooksController < ApplicationController
     end
   end
 
-   def index
+  def index
+    if params[:q]
+     @books = Book.all.search(params[:q].downcase)
+    else
     @books = Book.all
-  end
+   end
+end
 
    def show
     @book = Book.find(params[:id])
@@ -37,19 +41,11 @@ class BooksController < ApplicationController
     end 
    end
 
-   def search
-    if params[:search].blank?  
-      redirect_to books_path 
-    else  
-      @parameter = params[:search].downcase  
-      @results = Book.all.where("lower(title) LIKE :search", search: @parameter) 
-    end 
-   end
 
     private
 
     def book_params
-        params.require(:book).permit(:title, :description, :genre, :author_id, :search, author_attributes: [:name])
+        params.require(:book).permit(:title, :description, :genre, :author_id, author_attributes: [:name])
     end
 
     def set_book

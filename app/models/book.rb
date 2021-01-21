@@ -32,4 +32,8 @@ class Book < ApplicationRecord
     "#{title} - #{author.try(:name)}" 
   end
 
+  def self.search(params)
+    where("LOWER(title) LIKE ?", "%#{params}%")
+  end
+  
 end
